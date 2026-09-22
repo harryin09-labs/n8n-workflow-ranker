@@ -1,47 +1,96 @@
 # n8n Workflow Intelligence & Ranking System
 
-An autonomous, evidence-based intelligence and ranking system for n8n workflow templates. It discovers, crawls, analyzes, scores, categorizes, deduplicates, stores, ranks, and continuously monitors workflow templates published on [n8n.io/workflows](https://n8n.io/workflows/).
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python" alt="Python 3.11+">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License MIT">
+  <img src="https://img.shields.io/github/stars/harryin09-labs/n8n-workflow-ranker?style=for-the-badge&logo=github" alt="Stars">
+  <img src="https://img.shields.io/badge/n8n-Workflow%20Intelligence-orange?style=for-the-badge&logo=n8n" alt="n8n">
+  <img src="https://img.shields.io/github/repo-size/harryin09-labs/n8n-workflow-ranker?style=for-the-badge" alt="Repo Size">
+</p>
 
-## 🧩 Problem Solved
-The official n8n template library is vast and growing, making it difficult for users to:
-1. **Find Quality Workflows**: Discover templates that are actually reliable and practical, rather than just popular.
-2. **Assess Security & Reliability**: Identify workflows that might contain hardcoded secrets, dangerous code execution (`eval`), or insecure hook configurations.
-3. **Understand Complexity & Cost**: Quickly distinguish between free/low-cost "quick wins" and expensive, complex enterprise integrations.
-4. **Identify Duplicates/Variants**: Filter out repetitive templates to find original, high-value automation patterns.
-
-## 🚀 Use Cases
-- **Enterprise Security Teams**: Automatically audit templates before deployment to ensure no secrets or dangerous patterns are introduced.
-- **n8n Power Users**: Quickly find "hidden gem" workflows that solve specific business problems with high reliability and low complexity.
-- **Consultants & Agencies**: Rapidly compare workflow solutions for clients based on cost footprint and estimated time savings.
-- **Automation Builders**: Search for templates that have been rigorously scored across 11 dimensions, including design quality, reusability, and maintenance.
+> **An autonomous, evidence-based intelligence and ranking system for n8n workflow templates.** Discovers, crawls, analyzes, scores (12 dimensions), deduplicates, and ranks workflows from [n8n.io](https://n8n.io/workflows/) — with an interactive Streamlit dashboard and FastAPI REST API.
 
 ---
 
-## 🚀 Key Capabilities
+<p align="center">
+  <i>🚀 Want to see it in action? Add a screenshot or GIF of the dashboard here!</i>
+</p>
 
-- **Automated Discovery**: Discovers workflow templates via official sitemaps (`https://n8n.io/sitemap-workflows.xml`) and search APIs.
-- **Polite & Resilient Crawler**: Token bucket rate limiting, disk caching, retry backoff, and raw JSON archiving.
-- **Deep Graph Extraction**: Parses nodes, trigger types, connections, code blocks, AI components, credentials, and databases.
-- **Multi-Dimensional Classification**:
-  - **Complexity**: `BEGINNER`, `INTERMEDIATE`, `ADVANCED`, `EXPERT`
-  - **Cost Footprint**: `FREE`, `MOSTLY_FREE`, `LOW_COST`, `PAID`, `EXPENSIVE`
-  - **Security Audit**: Static vulnerability detection (hardcoded secrets, dynamic `eval`, unprotected webhooks)
-- **11-Dimension Deterministic Scoring**:
-  - Practical usefulness (18%)
-  - Automation/time-saving value (15%)
-  - Workflow design quality (12%)
-  - Reliability/robustness (10%)
-  - Ease of setup (10%)
-  - Reusability/customization (9%)
-  - Documentation quality (6%)
-  - Integration quality (5%)
-  - Security (5%)
-  - Maintenance/current relevance (5%)
-  - Cost efficiency (5%)
-- **Multi-Layer Duplicate Detection**: Exact hash, structural fingerprinting, and semantic Jaccard similarity.
-- **Curated Leaderboards**: 18+ auto-generated ranking categories (Top AI Agents, Top Free, Best Quick Wins, Hidden Gems, etc.).
-- **Natural Language Recommendation Engine**: Answers automation questions backed by database evidence.
-- **Interactive Streamlit Dashboard**: Full GUI for browsing, filtering, auditing, and ranking workflows.
+<p align="center">
+  <img src="https://via.placeholder.com/800x450/1a1a2e/e94560?text=Streamlit+Dashboard+Preview" alt="Dashboard Preview" width="80%">
+</p>
+
+---
+
+## 📋 Table of Contents
+- [🧩 Problem Solved](#-problem-solved)
+- [🚀 Use Cases](#-use-cases)
+- [⚡ Quick Demo](#-quick-demo)
+- [✨ Key Capabilities](#-key-capabilities)
+- [📂 Project Structure](#-project-structure)
+- [🛠️ Installation & Setup](#️-installation--setup)
+- [💻 Running the System](#-running-the-system)
+- [📊 Database Schema](#-database-schema)
+- [🤝 Contributing](#-contributing)
+
+---
+
+## 🧩 Problem Solved
+
+The official n8n template library has **thousands of workflows** — but no quality ranking system. Finding a reliable, well-designed automation that actually solves your problem is like finding a needle in a haystack.
+
+This project solves:
+1. **Find Quality Workflows** — Discover templates that are actually reliable and practical, not just popular.
+2. **Assess Security & Reliability** — Automatically flag workflows with hardcoded secrets, dangerous `eval()` calls, or insecure webhooks.
+3. **Understand Complexity & Cost** — Instantly distinguish between free/low-cost "quick wins" and complex enterprise integrations.
+4. **Identify Duplicates/Variants** — Filter out repetitive templates to find original, high-value automation patterns.
+
+---
+
+## 🚀 Use Cases
+
+| User | How They Benefit |
+|------|-----------------|
+| **Enterprise Security Teams** | Auto-audit templates pre-deployment for secrets and dangerous patterns |
+| **n8n Power Users** | Discover "hidden gem" workflows with high reliability and low complexity |
+| **Consultants & Agencies** | Compare workflow solutions for clients by cost footprint and estimated time savings |
+| **Automation Builders** | Search templates scored across 12 dimensions — design quality, reusability, maintenance |
+
+---
+
+## ⚡ Quick Demo
+
+Get started and see ranking results in under 60 seconds:
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run the pipeline on 5 sample workflows
+python -m agents.supervisor --limit 5
+
+# 3. Launch the interactive dashboard
+streamlit run dashboard/app.py
+```
+
+> **No external services needed.** The default config runs fully offline with deterministic scoring. Works out of the box.
+
+---
+
+## ✨ Key Capabilities
+
+| Category | Features |
+|----------|----------|
+| **🔍 Discovery** | Automatically finds templates via official sitemaps and search APIs |
+| **🤖 Crawler** | Polite crawling with token bucket rate limiting, disk caching, and retry backoff |
+| **🧬 Graph Extraction** | Parses node types, triggers, connections, AI components, credentials, databases |
+| **🏷️ Classification** | Complexity (Beginner→Expert), Cost (Free→Expensive), Security audit |
+| **📊 12-Dimension Scoring** | Practical usefulness, automation value, design quality, reliability, setup ease, reusability, documentation, integrations, security, maintenance, cost efficiency |
+| **🔗 Duplicate Detection** | Exact hash + structural fingerprint + semantic Jaccard similarity |
+| **🏆 Leaderboards** | 18+ auto-generated categories — Top AI Agents, Best Free, Hidden Gems, etc. |
+| **💬 Recommendation Engine** | Natural language query engine backed by database evidence |
+| **🖥️ Interactive Dashboard** | Full Streamlit GUI for browsing, filtering, and ranking workflows |
+| **🔄 Incremental Updates** | Continuous monitoring with change detection and version history |
 
 ---
 
@@ -57,7 +106,7 @@ n8n-workflow-ranker/
 │   ├── extractor.py             # Normalization and database extraction
 │   ├── analyst.py               # Complexity, cost, and usefulness analysis
 │   ├── security.py              # Security review and finding generation
-│   ├── scorer.py                # 11-dimension scoring and persistence
+│   ├── scorer.py                # 12-dimension scoring and persistence
 │   ├── deduplicator.py          # Multi-layer duplicate detection
 │   ├── ranking.py               # Generates and caches leaderboards
 │   ├── updater.py               # Incremental monitoring and versioning
@@ -83,7 +132,7 @@ n8n-workflow-ranker/
 ├── scoring/                     # Scoring Rubric & Metrics
 │   ├── rubric.yaml              # Weights and rating label bounds
 │   ├── penalties.yaml           # Penalty rules and deductions
-│   ├── score.py                 # 11-criterion deterministic score engine
+│   ├── score.py                 # 12-criterion deterministic score engine
 │   ├── confidence.py            # 0-100% evidence completeness score
 │   ├── ai_capability.py         # 0-10 AI agent capability score
 │   └── value_gem.py             # Value Score and Hidden Gem Score
@@ -113,31 +162,33 @@ n8n-workflow-ranker/
 │   ├── test_scoring.py
 │   └── test_database.py
 │
-├── data/                        # Local Storage
+├── data/                        # Local Storage (gitignored)
 │   ├── raw/                     # Raw JSON payloads
 │   ├── normalized/              # Clean normalized workflow JSON
 │   ├── cache/                   # HTTP response disk cache
 │   └── n8n_workflows.db         # SQLite database
 │
 ├── config.yaml                  # System configuration
-├── .env                         # Environment settings
-├── .env.example
-├── requirements.txt
-└── README.md
+├── .env.example                 # Environment template
+├── requirements.txt             # Python dependencies
+├── CONTRIBUTING.md              # Contribution guidelines
+└── README.md                    # This file
 ```
 
 ---
 
 ## 🛠️ Installation & Setup
 
-1. **Install Dependencies**:
+**Prerequisites:** Python 3.11+
+
+### 1. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-2. **Configure Environment** (Optional):
-The default configuration is ready out of the box in `.env`.
-To configure an OpenAI-compatible local LLM endpoint:
+### 2. Configure Environment (Optional)
+The default configuration works out of the box. To enable AI-assisted scoring via a local LLM endpoint:
+
 ```env
 AI_PROVIDER=openai_compatible
 AI_BASE_URL=http://127.0.0.1:20128/v1
@@ -148,46 +199,64 @@ ENABLE_AI_SCORING=false
 
 ## 💻 Running the System
 
-### 1. Run Complete Pipeline (MVP 20 Workflows)
+### 🏃 Complete Pipeline (20 Workflows)
 ```bash
 python -m agents.supervisor --limit 20
 ```
 
-### 2. Launch Interactive Streamlit Dashboard
+### 🖥️ Interactive Dashboard
 ```bash
 streamlit run dashboard/app.py
 ```
 
-### 3. Run Incremental Update Cycle
+### 🔄 Incremental Update Cycle
 ```bash
 python -m agents.updater
 ```
 
-### 4. Run Pytest Suite
+### 🧪 Run Tests
 ```bash
 python -m pytest -v
 ```
 
-### 5. Launch FastAPI Backend
+### 🌐 FastAPI Backend
 ```bash
 uvicorn api.app:app --reload --port 8000
 ```
 
 ---
 
-## 📊 Database Schema Summary
+## 📊 Database Schema
 
-The SQLite database is stored at `data/n8n_workflows.db` with 13 relational tables:
-1. `discovery_records`: Discovery URLs, sources, and crawl status.
-2. `workflows`: Main catalog table with scores, complexity, cost class, security, hashes, and views.
-3. `workflow_nodes`: Extracted nodes, types, triggers, AI flags, and credentials.
-4. `workflow_integrations`: Connected apps and services.
-5. `workflow_categories`: Taxonomy categories.
-6. `score_evidence`: Breakdown across all 11 criteria with exact evidence and confidence.
-7. `penalties`: Deductions applied with cited evidence.
-8. `security_findings`: Static audit findings with severity and recommendations.
-9. `duplicates`: Multi-layer duplicate and variant links.
-10. `rankings`: Cached category leaderboards.
-11. `workflow_versions`: Historical snapshots for change detection.
-12. `crawl_runs`: Crawl session execution logs.
-13. `crawl_errors`: Failed URL error queue.
+13 relational tables in a single SQLite database (`data/n8n_workflows.db`):
+
+| Table | Purpose |
+|-------|---------|
+| `discovery_records` | Discovered URLs, sources, crawl status |
+| `workflows` | Main catalog — scores, complexity, cost, security, hashes |
+| `workflow_nodes` | Extracted nodes, triggers, AI flags, credentials |
+| `workflow_integrations` | Connected apps and services |
+| `workflow_categories` | Taxonomy categories |
+| `score_evidence` | 12-dimension breakdown with exact evidence |
+| `penalties` | Deductions with cited evidence |
+| `security_findings` | Static audit findings with severity |
+| `duplicates` | Multi-layer duplicate and variant links |
+| `rankings` | Cached category leaderboards |
+| `workflow_versions` | Historical snapshots for change detection |
+| `crawl_runs` | Crawl session execution logs |
+| `crawl_errors` | Failed URL error queue |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
+
+---
+
+<p align="center">
+  <b>Built with ❤️ for the n8n community</b><br>
+  <a href="https://github.com/harryin09-labs/n8n-workflow-ranker">⭐ Star on GitHub</a> •
+  <a href="https://github.com/harryin09-labs/n8n-workflow-ranker/issues">🐛 Report a Bug</a> •
+  <a href="https://github.com/harryin09-labs/n8n-workflow-ranker/discussions">💬 Start a Discussion</a>
+</p>
