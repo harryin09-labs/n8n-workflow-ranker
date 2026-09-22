@@ -55,6 +55,10 @@ data/*.sqlite3
 .agents/
 .claude/
 
+# GIF capture intermediates (keep the final GIF)
+docs/frame_*.png
+docs/test_*.png
+
 # IDE
 .vscode/
 .idea/

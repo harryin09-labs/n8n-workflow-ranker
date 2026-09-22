@@ -13,11 +13,8 @@
 ---
 
 <p align="center">
-  <i>🚀 Want to see it in action? Add a screenshot or GIF of the dashboard here!</i>
-</p>
-
-<p align="center">
-  <img src="https://via.placeholder.com/800x450/1a1a2e/e94560?text=Streamlit+Dashboard+Preview" alt="Dashboard Preview" width="80%">
+  <b>⬇️ See it in action — the live dashboard: metrics, leaderboards, and filtering</b><br><br>
+  <img src="docs/dashboard_demo.gif" alt="Streamlit dashboard demo: overview metrics, Hidden Gems leaderboard, Top AI Agents, and Beginner workflow filtering" width="85%">
 </p>
 
 ---
