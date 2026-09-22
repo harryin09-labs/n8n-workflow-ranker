@@ -1,0 +1,47 @@
+# Scoring Rubric Specification
+weights:
+  daily_life_practicality: 0.15
+  automation_value: 0.13
+  practical_usefulness: 0.10
+  design_quality: 0.10
+  reliability: 0.10
+  ease_of_setup: 0.10
+  reusability: 0.08
+  documentation: 0.05
+  integration_quality: 0.05
+  security: 0.05
+  maintenance: 0.04
+  cost_efficiency: 0.05
+
+rating_labels:
+  - min: 9.00
+    max: 10.00
+    label: "Exceptional"
+  - min: 8.00
+    max: 8.99
+    label: "Excellent"
+  - min: 7.00
+    max: 7.99
+    label: "Very Good"
+  - min: 6.00
+    max: 6.99
+    label: "Good"
+  - min: 5.00
+    max: 5.99
+    label: "Average"
+  - min: 4.00
+    max: 4.99
+    label: "Below Average"
+  - min: 0.00
+    max: 3.99
+    label: "Poor"
+
+confidence_weights:
+  page_inspected: 15
+  description_inspected: 10
+  node_info_available: 15
+  workflow_json_inspected: 30
+  dependencies_verified: 10
+  documentation_verified: 10
+  freshness_verified: 5
+  execution_tested: 5

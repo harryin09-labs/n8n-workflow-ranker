@@ -1,0 +1,35 @@
+# Penalty Definitions and Amounts
+penalties:
+  broken_node:
+    amount: 0.5
+    description: "Node configuration references invalid parameters or unresolvable structure."
+  deprecated_integration:
+    amount: 0.5
+    description: "Uses obsolete or discontinued node versions/integrations."
+  hardcoded_credentials:
+    amount: 1.0
+    description: "Sensitive keys, tokens, or passwords found embedded directly in node parameters."
+  unsafe_credential_exposure:
+    amount: 1.0
+    description: "Exposes credentials via query string, unsecured logs, or unencrypted endpoints."
+  unsafe_webhook_assumptions:
+    amount: 0.5
+    description: "Webhook trigger lacks authentication or validation headers."
+  weak_error_handling:
+    amount: 0.3
+    description: "Complex workflow lacking error triggers, catch nodes, or fallback paths."
+  missing_setup_documentation:
+    amount: 0.3
+    description: "Complex or multi-service workflow without setup instructions or parameter guide."
+  abandoned_dependency:
+    amount: 0.5
+    description: "References defunct or inaccessible external API or community node."
+  excessive_unnecessary_complexity:
+    amount: 0.2
+    description: "Redundant node chaining where simpler native node logic suffices."
+  near_duplicate:
+    amount: 0.3
+    description: "Near identical structural duplicate of an earlier published template."
+  likely_broken_configuration:
+    amount: 0.5
+    description: "Missing essential required inputs, dangling disconnected nodes, or malformed expressions."

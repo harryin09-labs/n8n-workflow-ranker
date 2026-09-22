@@ -1,0 +1,15 @@
+httpx>=0.28.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+pyyaml>=6.0.0
+python-dotenv>=1.0.0
+streamlit>=1.30.0
+fastapi>=0.110.0
+uvicorn>=0.30.0
+pandas>=2.0.0
+numpy>=1.24.0
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+altair>=5.0.0

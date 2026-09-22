@@ -1,0 +1,45 @@
+# Global System Configuration for n8n Workflow Intelligence & Ranking System
+
+system:
+  name: "n8n Workflow Intelligence & Ranking System"
+  version: "1.0.0"
+  data_dir: "data"
+  raw_dir: "data/raw"
+  normalized_dir: "data/normalized"
+  cache_dir: "data/cache"
+  exports_dir: "data/exports"
+  database_path: "data/n8n_workflows.db"
+  logs_dir: "logs"
+
+discovery:
+  sitemap_url: "https://n8n.io/sitemap-workflows.xml"
+  sitemap_index_url: "https://n8n.io/sitemap_index.xml"
+  search_api_url: "https://api.n8n.io/api/templates/search"
+  workflow_api_base: "https://api.n8n.io/api/templates/workflows"
+  categories_api_url: "https://api.n8n.io/api/templates/categories"
+  default_limit: 20
+  batch_size: 20
+
+crawler:
+  concurrency: 5
+  delay_seconds: 0.5
+  timeout_seconds: 15
+  max_retries: 3
+  backoff_factor: 1.5
+  user_agent: "n8n-Workflow-Ranker/1.0 (+https://github.com/n8n-ranker)"
+  cache_enabled: true
+  cache_ttl_hours: 24
+
+ai:
+  enabled: false
+  provider: "openai_compatible"
+  base_url: "http://127.0.0.1:20128/v1"
+  model: "auto"
+  api_key: ""
+  temperature: 0.2
+  max_tokens: 1000
+
+ranking:
+  min_confidence_for_top_tier: 50
+  hidden_gem_max_views: 1000
+  hidden_gem_min_score: 7.5
