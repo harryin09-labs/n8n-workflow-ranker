@@ -2,6 +2,19 @@
 
 An autonomous, evidence-based intelligence and ranking system for n8n workflow templates. It discovers, crawls, analyzes, scores, categorizes, deduplicates, stores, ranks, and continuously monitors workflow templates published on [n8n.io/workflows](https://n8n.io/workflows/).
 
+## 🧩 Problem Solved
+The official n8n template library is vast and growing, making it difficult for users to:
+1. **Find Quality Workflows**: Discover templates that are actually reliable and practical, rather than just popular.
+2. **Assess Security & Reliability**: Identify workflows that might contain hardcoded secrets, dangerous code execution (`eval`), or insecure hook configurations.
+3. **Understand Complexity & Cost**: Quickly distinguish between free/low-cost "quick wins" and expensive, complex enterprise integrations.
+4. **Identify Duplicates/Variants**: Filter out repetitive templates to find original, high-value automation patterns.
+
+## 🚀 Use Cases
+- **Enterprise Security Teams**: Automatically audit templates before deployment to ensure no secrets or dangerous patterns are introduced.
+- **n8n Power Users**: Quickly find "hidden gem" workflows that solve specific business problems with high reliability and low complexity.
+- **Consultants & Agencies**: Rapidly compare workflow solutions for clients based on cost footprint and estimated time savings.
+- **Automation Builders**: Search for templates that have been rigorously scored across 11 dimensions, including design quality, reusability, and maintenance.
+
 ---
 
 ## 🚀 Key Capabilities
